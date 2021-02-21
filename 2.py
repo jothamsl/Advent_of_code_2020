@@ -19,12 +19,25 @@ def get_data():
 
 
 def part_one(letters, passwords, lower_bounds, upper_bounds):
+    """
+    Check if letter in range of lower and upper bound
+    """
     valid_count = 0
     for i in range(len(letters)):
         if upper_bounds[i] >= passwords[i].count(letters[i]) >= lower_bounds[i]:
             valid_count += 1
     print(valid_count)
 
+
+def part_two(letters, passwords, pos1, pos2):
+    """
+    Check Specified positions for letter in password
+    """
+    valid_count = 0
+    for i in range(len(letters)):
+        if bool(passwords[i][pos1[i]-1] == letters[i]) != bool(passwords[i][pos2[i]-1] == letters[i]):
+            valid_count += 1
+    print(valid_count)
 
 def main():
     """
@@ -33,6 +46,7 @@ def main():
     passwords are valid according to their policies.
     """
     part_one(*get_data())
+    part_two(*get_data())
 
 
 if __name__ == "__main__":
